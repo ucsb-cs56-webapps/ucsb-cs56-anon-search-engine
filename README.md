@@ -1,6 +1,6 @@
 # ucsb-cs56-anon-search-engine
 
-#FALL 2018
+# FALL 2018
 
 
 Members:
