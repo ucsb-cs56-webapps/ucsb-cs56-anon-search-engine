@@ -1,0 +1,37 @@
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-text {
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 200px;
+}
+
+#search-section {
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+
+    #searchbar {
+        width: 33%;
+    }
+}
+
+
+#engine-buttons {
+    justify-content: space-around;
+
+}
