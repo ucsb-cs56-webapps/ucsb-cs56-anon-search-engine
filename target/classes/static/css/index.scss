@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 #title-text {
     align-items: center;
     margin-top: 40px;
@@ -27,11 +31,40 @@
 
     #searchbar {
         width: 33%;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px 0 10px;
+        border-radius: 5px;
+        outline: 0;
+        margin-right: 20px;
+    }
+
+    #search-button {
+        border-radius: 5px;
+        width: 100px;
+        background-color: lightgray;
     }
 }
 
+.selected {
+    border: 3px solid blue;
+}
 
 #engine-buttons {
     justify-content: space-around;
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        padding: 3px;
+
+        .logo {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    }
 
 }
