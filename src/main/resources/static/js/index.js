@@ -18,12 +18,14 @@ $(document).ready(function() {
 
 
 function performSearch() {
+	// TODO: handle {"", "\", "\\", ...} for query
     console.log("Performing Search:");
     const engine = getEngineType();
     const query = document.getElementById('searchbar').value;
 
     var url = "/search/" + engine + "/" + query;
    	var xmlhttp = new XMLHttpRequest();
+   	
    	xmlhttp.onreadystatechange = function(){
    	    if (xmlhttp.readyState == XMLHttpRequest.DONE){
    	    	if (xmlhttp.status == 200){
