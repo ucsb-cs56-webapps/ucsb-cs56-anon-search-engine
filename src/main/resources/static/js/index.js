@@ -22,9 +22,20 @@ function performSearch() {
     const engine = getEngineType();
     const query = document.getElementById('searchbar').value;
 
+    var url = "/search/" + engine + "/" + query;
+   	var xmlhttp = new XMLHttpRequest();
 
-    //make backend call here.
-}
+   	xmlhttp.onreadystatechange = function(){
+   	    if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
+   	    	console.log(this.responseText);
+   	   	else {
+   	    	alert('Something went wrong!');
+   	    }
+   	};
+
+   	xmlhttp.open("POST", url, true);
+   	xmlhttp.send();
+   	}
 
 function getEngineType() {
     const engine = $('.selected').attr('id');
