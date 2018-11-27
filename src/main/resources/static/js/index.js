@@ -24,13 +24,15 @@ function performSearch() {
 
     var url = "/search/" + engine + "/" + query;
    	var xmlhttp = new XMLHttpRequest();
-
    	xmlhttp.onreadystatechange = function(){
-   	    if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
-   	    	console.log(this.responseText);
-   	   	else {
-   	    	alert('Something went wrong!');
-   	    }
+   	    if (xmlhttp.readyState == XMLHttpRequest.DONE){
+   	    	if (xmlhttp.status == 200){
+   	    		console.log(this.responseText);
+   	    	}
+   	   		else {
+   	    		alert('Something went wrong!');
+   	    	}
+   		}
    	};
 
    	xmlhttp.open("POST", url, true);
