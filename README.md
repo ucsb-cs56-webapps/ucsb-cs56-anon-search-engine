@@ -19,7 +19,7 @@ Kyle Stanfield, kylejstanfield
 
 Matt Moss, matthewmoss
 
-[ucsb-cs56-f18-anonsearchengine.herokuapp.com](ucsb-cs56-f18-anonsearchengine.herokuapp.com)
+https://ucsb-cs56-f18-anonsearchengine.herokuapp.com
 
 
 Summary:
