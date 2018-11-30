@@ -16,13 +16,34 @@ $(document).ready(function() {
 });
 
 
-
 function performSearch() {
     console.log("Performing Search:");
     const engine = getEngineType();
     const query = document.getElementById('searchbar').value;
-    console.log(engine);
-    console.log(query);
+
+    // Used https://www.mkyong.com/spring-boot/spring-boot-ajax-example/ for reference
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/search",
+        data: (engine + ":" + query),
+        dataType: "text",
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (e) {
+
+            var json = "<h4>Ajax Response</h4><pre>"
+                + e.responseText + "</pre>";
+            $('#feedback').html(json);
+
+            console.log("ERROR : ", e);
+            $("#btn-search").prop("disabled", false);
+
+        }
+    });
 }
 
 function getEngineType() {
