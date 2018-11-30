@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.pconrad.anon_search_engine;
+package edu.ucsb.cs56.pconrad.springboot.hello;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +25,6 @@ public class HelloController {
 	public String page3() {
         return "page3";
     }
+
+
 }
