@@ -1,12 +1,20 @@
 package edu.ucsb.cs56.pconrad.springboot.hello;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.net.*;
+import java.util.*;
+import java.io.*;
 import javax.net.ssl.HttpsURLConnection;
-import javax.tools.JavaFileObject;
 
-import com.fasterxml.jackson.core.JsonParser;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.stream.Collectors;
+import javax.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 public class DuckDuckGoSearchManager {
 
@@ -38,7 +46,7 @@ public class DuckDuckGoSearchManager {
         // Parse results
 
         JsonParser parser = new JsonParser();
-		JavaFileObject json = parser.parse(content.toString()).getAsJsonObject();
+		JsonObject json = parser.parse(content.toString()).getAsJsonObject();
 
         // Print results
 
