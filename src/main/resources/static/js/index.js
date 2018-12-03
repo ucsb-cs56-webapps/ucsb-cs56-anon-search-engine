@@ -22,6 +22,7 @@ function performSearch() {
     const query = document.getElementById('searchbar').value;
 
     // Used https://www.mkyong.com/spring-boot/spring-boot-ajax-example/ for reference
+
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -31,7 +32,7 @@ function performSearch() {
         cache: false,
         timeout: 600000,
         success: function (data) {
-            console.log(data);
+            didSuccessfullyGetData(data);
         },
         error: function (e) {
 
@@ -44,6 +45,10 @@ function performSearch() {
 
         }
     });
+}
+
+const didSuccessfullyGetData = (data) => {
+    console.log(data);
 }
 
 function getEngineType() {

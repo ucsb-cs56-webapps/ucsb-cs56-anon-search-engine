@@ -10,7 +10,6 @@ public class SearchQuery{
         userEntry = splitResult[1];
     }
 
-
     public String getEngine(){
         return engine;
     }
