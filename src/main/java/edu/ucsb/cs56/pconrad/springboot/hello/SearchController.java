@@ -36,6 +36,12 @@ public class SearchController{
 			results.add(resultsObject);
 		}
 		else if(query.getEngine().equals("DuckDuckGo")){
+			try {
+				DuckDuckGoSearchManager.search(query);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				System.out.println("error: " + ex);
+			}
 			//results = "Searched " + query.getUserEntry() + " with DuckDuckGo";
 		}
 		else if(query.getEngine().equals("Bing")){
