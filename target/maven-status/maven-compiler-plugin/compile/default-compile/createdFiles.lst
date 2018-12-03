@@ -1,2 +1,5 @@
-edu/ucsb/cs56/pconrad/springboot/hello/HelloController.class
+edu/ucsb/cs56/pconrad/springboot/hello/SearchController.class
 edu/ucsb/cs56/pconrad/springboot/hello/Application.class
+edu/ucsb/cs56/pconrad/springboot/hello/HelloController.class
+edu/ucsb/cs56/pconrad/springboot/hello/SearchQuery.class
+edu/ucsb/cs56/pconrad/springboot/hello/SearchResult.class
