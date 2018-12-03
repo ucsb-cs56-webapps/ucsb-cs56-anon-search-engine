@@ -2,6 +2,7 @@
 .settings
 .vscode
 .project
+.classpath
 *.css.map
 
 #API keys
