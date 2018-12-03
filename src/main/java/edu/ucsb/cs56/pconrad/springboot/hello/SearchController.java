@@ -22,19 +22,18 @@ public class SearchController{
 		SearchQuery query = new SearchQuery(rawQuery);
 		String errorMsg = new String();
 		// We will eventually return something more complex than a String
-		ArrayList<String> results = new ArrayList<String>();
+		ArrayList<SearchResult> results = new ArrayList<SearchResult>();
 
 		if(errors.hasErrors()) {
 			errorMsg = (errors.getAllErrors().stream().map(x->x.getDefaultMessage()).collect(Collectors.joining(",")));
 			return ResponseEntity.badRequest().body(errorMsg);
 		}
 
+		// API's should return an ArrayList<SearchResult> Object.
+
 		if(query.getEngine().equals("Google")){
-			//  this is just an example. Individual search api functions should return an ArrayList of Strings, formatted as
-			//  "title:subtitle:URL" which can be easily achieved with the toSplittableString() method in the SearchResult Object.
-			// then set results = YourEngineFunctionThatReturnsAnArrayListOfStrings() and it should work.
 			SearchResult resultsObject = new SearchResult("title", "subtitle","URL");
-			results.add(resultsObject.toSplittableString());
+			results.add(resultsObject);
 		}
 		else if(query.getEngine().equals("DuckDuckGo")){
 			//results = "Searched " + query.getUserEntry() + " with DuckDuckGo";
@@ -43,6 +42,12 @@ public class SearchController{
 			//results = "Searched " + query.getUserEntry() + " with Bing";
 		}
 
-		return ResponseEntity.ok(results);
+		ArrayList<String> stringResults = new ArrayList<String>();
+
+		for(int i = 0; i < results.size(); i++) {
+			stringResults.add(results.get(i).toSplittableString());
+		}
+
+		return ResponseEntity.ok(stringResults);
 	}
 }
