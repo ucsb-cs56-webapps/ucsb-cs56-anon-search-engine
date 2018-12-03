@@ -1,5 +1,6 @@
 .sass-cache
 .settings
+.vscode
 .project
 *.css.map
 
