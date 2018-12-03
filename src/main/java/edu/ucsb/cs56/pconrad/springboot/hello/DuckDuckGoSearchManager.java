@@ -1,36 +1,29 @@
 package edu.ucsb.cs56.pconrad.springboot.hello;
 
 import java.net.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.io.*;
 import javax.net.ssl.HttpsURLConnection;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.stream.Collectors;
-import javax.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 public class DuckDuckGoSearchManager {
 
-    public static void search(SearchQuery query) throws Exception {
-        System.out.println("starting query!");
+    public static ArrayList<SearchResult> search(SearchQuery query) throws Exception {
 
-        //https://api.duckduckgo.com/?no_redirect=1&no_html=1&skip_disambig=1&q=DuckDuckGo
-        URL url = new URL("https://api.duckduckgo.com/?q=DuckDuckGo&format=json");
+        // Information on the api can be found here: https://api.duckduckgo.com/api
+        // Doesn't return exact search results. Instead, it queries their instant answer api.
+        // As a result, we display the instant answer they provide and then their related results.
 
-        // Set up connects
+        URL url = new URL("https://api.duckduckgo.com/?format=json" + "&q=" + URLEncoder.encode(query.getUserEntry(), "UTF-8"));
+
+        // Set up connection
 
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestProperty("User-Agent", "UCSB/1.0");
-        // connection.setRequestMethod("GET");
-        // connection.setRequestProperty("Content-Type", "application/json");
-        System.out.println(connection.getResponseMessage());
 
         // Read output
 
@@ -46,13 +39,36 @@ public class DuckDuckGoSearchManager {
         // Parse results
 
         JsonParser parser = new JsonParser();
-		JsonObject json = parser.parse(content.toString()).getAsJsonObject();
+        JsonObject json = parser.parse(content.toString()).getAsJsonObject();
 
-        // Print results
+        // Get instant answer
 
+        String abstractUrl = json.get("AbstractURL").toString();
+        String abstractTitle = json.get("AbstractSource").toString();
+        String abstractHeading = json.get("Heading").toString();
 
+        SearchResult abstractObject = new SearchResult(abstractTitle, abstractHeading, abstractUrl);
+        ArrayList<SearchResult> results = new ArrayList<SearchResult>();
+        results.add(abstractObject);
 
-        System.out.println("did get response: " + content.toString());
+        // Get related results
+
+        JsonArray relatedResults = json.getAsJsonArray("RelatedTopics");
+        for (int i = 0; i < relatedResults.size(); i++) {
+            JsonElement element = relatedResults.get(i);
+            if (!element.isJsonObject()) {
+                continue;
+            }
+            JsonObject object = (JsonObject)element;
+            String relatedUrl = object.get("FirstURL").toString();
+            String relatedDetails = object.get("Text").toString();
+            results.add(new SearchResult(relatedDetails, relatedDetails, relatedUrl));
+        }
+
+        // Return results
+
+		return results;
+
     }
     
 }

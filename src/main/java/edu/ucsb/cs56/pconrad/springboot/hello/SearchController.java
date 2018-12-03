@@ -43,12 +43,11 @@ public class SearchController{
 		}
 		else if(query.getEngine().equals("DuckDuckGo")){
 			try {
-				DuckDuckGoSearchManager.search(query);
+				List<SearchResult> goResults = DuckDuckGoSearchManager.search(query);
+				results.addAll(goResults);
 			} catch (Exception ex) {
-				ex.printStackTrace();
-				System.out.println("error: " + ex);
+				System.out.println("duck duck go results failed: " + ex);
 			}
-			//results = "Searched " + query.getUserEntry() + " with DuckDuckGo";
 		}
 		else if(query.getEngine().equals("Bing")){
 			String file ="bingAPI_key.txt";
