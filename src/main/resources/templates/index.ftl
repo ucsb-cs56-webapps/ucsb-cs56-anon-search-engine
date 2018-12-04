@@ -20,5 +20,29 @@
 				<div id="bing-search-button" class="logo-container clickable"><img class="logo" src="/assets/bing_logo.png"></div>
 			</div>
 		</div>
- 	</body>
+
+                <div class="result-container" style="display: none">
+                        <div id="result-header" class="flex-row">
+                                <div id="back-to-index" class="clickable">
+                                        <h1>ASE</h1>
+                                </div>
+                                <input type="text" id="searchbar-result" placeholder="Enter Search Here"></input>
+                                <button id="search-button-result">Search</button>
+                                <div id="engine-buttons-result" class="flex-row">
+                                        <div id="google-search-button-result" class="logo-container-result clickable selected">
+                                                <img class="logo" src="/assets/google_logo.png">
+                                        </div>
+                                        <div id="duckduckgo-search-button-result" class="logo-container-result clickable">
+                                                <img class="logo" src="/assets/ddg_logo.png">
+                                        </div>
+                                        <div id="bing-search-button-result" class="logo-container-result clickable">
+                                                <img class="logo" src="/assets/bing_logo.png">
+                                        </div>
+                                </div>
+                        </div>
+                        <div id="result-list">
+                        </div>
+                </div>
+        </body>
+
 </html>
