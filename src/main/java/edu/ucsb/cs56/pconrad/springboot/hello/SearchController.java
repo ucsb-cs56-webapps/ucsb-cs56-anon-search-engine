@@ -61,40 +61,9 @@ public class SearchController{
 	            System.exit(1);
 	        }
 
-	        String searchTerm = query.getUserEntry();
-	        try {
-	            URL url = new URL(binghost + bingpath + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8"));
-	        	// Open the connection.
-		        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-		        connection.setRequestProperty("Ocp-Apim-Subscription-Key", bingSubscriptionKey);
-	       		// Receive the JSON response body.
-		        InputStream stream = connection.getInputStream();
-		        String bingResponse = new Scanner(stream).useDelimiter("\\A").next();
-		        stream.close();
-
-		        JsonParser parser = new JsonParser();
-		        JsonObject json = parser.parse(bingResponse).getAsJsonObject();
-		        
-		        json = parser.parse(json.get("webPages").toString()).getAsJsonObject();
-		        JsonArray array = json.getAsJsonArray("value");
-		        for(int i = 0; i < array.size(); ++i) {
-		        	JsonObject jname = parser.parse(array.get(i).toString()).getAsJsonObject();
-                    String name = jname.get("name").toString();
-                    JsonObject jsnippet = parser.parse(array.get(i).toString()).getAsJsonObject();
-                    String snippet = jname.get("snippet").toString();
-                    JsonObject jurl_ = parser.parse(array.get(i).toString()).getAsJsonObject();
-                    String url_ = jname.get("url").toString();
-		        	
-		        	results.add(new SearchResult(name, snippet, url_));
-		        }
-
-		        // name, snippet, url
-	        }
-	        catch (Exception e) {
-	            e.printStackTrace(System.out);
-	            System.exit(1);
-	        }
-			//results = "Searched " + query.getUserEntry() + " with Bing";
+	        String searchTerm = query.getUserEntry();	
+	        ArrayList<SearchResult> bingResults = BingSearch.getResult(searchTerm, binghost, bingpath, bingSubscriptionKey);
+		    results.addAll(bingResults);
 		}
 
 		ArrayList<String> stringResults = new ArrayList<String>();
