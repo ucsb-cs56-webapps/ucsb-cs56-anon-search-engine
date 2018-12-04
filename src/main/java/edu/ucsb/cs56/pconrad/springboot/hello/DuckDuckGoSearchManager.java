@@ -60,6 +60,9 @@ public class DuckDuckGoSearchManager {
                 continue;
             }
             JsonObject object = (JsonObject)element;
+            if (!object.has("FirstURL") || !object.has("Text")) {
+                continue;
+            }
             String relatedUrl = object.get("FirstURL").toString();
             String relatedDetails = object.get("Text").toString();
             results.add(new SearchResult(relatedDetails, relatedDetails, relatedUrl));
