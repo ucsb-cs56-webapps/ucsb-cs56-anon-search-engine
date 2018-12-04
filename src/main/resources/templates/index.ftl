@@ -23,7 +23,7 @@
 
                 <div class="result-container" style="display: none">
                         <div id="result-header" class="flex-row">
-                                <div id="back-to-index">
+                                <div id="back-to-index" class="clickable">
                                         <h1>ASE</h1>
                                 </div>
                                 <input type="text" id="searchbar-result" placeholder="Enter Search Here"></input>
