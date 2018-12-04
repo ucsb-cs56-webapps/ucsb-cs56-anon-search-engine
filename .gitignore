@@ -1,2 +1,9 @@
 .sass-cache
+.settings
+.vscode
+.project
+.classpath
 *.css.map
+
+#API keys
+bingAPI_key.txt
