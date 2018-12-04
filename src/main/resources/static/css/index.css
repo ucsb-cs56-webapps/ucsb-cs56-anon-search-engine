@@ -52,4 +52,31 @@
       max-width: 150px;
       max-height: 150px; }
 
+#back-to-index {
+        width:10%;
+        height:46px;
+}
+
+#search-section-result {
+        width:90%;
+        height:46px;
+}
+
+#search-section #searchbar {
+        width: 33%;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px 0 10px;
+        border-radius: 5px;
+        outline: 0;
+        margin-right: 20px;
+}
+
+#search-section #search-button {
+        border-radius: 5px;
+        width: 100px;
+        background-color: lightgray;
+}
+
 /*# sourceMappingURL=index.css.map */
