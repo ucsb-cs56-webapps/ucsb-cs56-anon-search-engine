@@ -89,7 +89,7 @@ const didSuccessfullyGetData = (data) => {
 function getEngineType() {
     const engine = $('.selected').attr('id');
 
-    if  (engine == "duckduckgo-search-button" || engine == "duckduckgo-search-button")
+    if  (engine == "duckduckgo-search-button" || engine == "duckduckgo-search-button-result")
         return "DuckDuckGo";
     else if (engine == "google-search-button" || engine == "google-search-button-result")
         return "Google";
