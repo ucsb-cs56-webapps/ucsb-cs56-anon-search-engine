@@ -74,7 +74,7 @@ public class SearchController{
 
 		        JsonParser parser = new JsonParser();
 		        JsonObject json = parser.parse(bingResponse).getAsJsonObject();
-		        
+
 		        json = parser.parse(json.get("webPages").toString()).getAsJsonObject();
 		        JsonArray array = json.getAsJsonArray("value");
 		        for(int i = 0; i < array.size(); ++i) {
@@ -84,7 +84,7 @@ public class SearchController{
                     String snippet = jname.get("snippet").toString();
                     JsonObject jurl_ = parser.parse(array.get(i).toString()).getAsJsonObject();
                     String url_ = jname.get("url").toString();
-		        	
+
 		        	results.add(new SearchResult(name, snippet, url_));
 		        }
 
@@ -97,12 +97,6 @@ public class SearchController{
 			//results = "Searched " + query.getUserEntry() + " with Bing";
 		}
 
-		ArrayList<String> stringResults = new ArrayList<String>();
-
-		for(int i = 0; i < results.size(); i++) {
-			stringResults.add(results.get(i).toSplittableString());
-		}
-
-		return ResponseEntity.ok(stringResults);
+		return ResponseEntity.ok(results);
 	}
 }
