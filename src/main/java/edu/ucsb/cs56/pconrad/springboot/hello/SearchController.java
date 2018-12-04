@@ -105,7 +105,6 @@ public class SearchController{
 		ArrayList<String> stringResults = new ArrayList<String>();
 
 		for(int i = 0; i < results.size(); i++) {
-			System.out.println("Result: " + results.get(i).toSplittableString());
 			stringResults.add(results.get(i).toSplittableString());
 		}
 
