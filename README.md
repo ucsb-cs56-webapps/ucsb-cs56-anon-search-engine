@@ -26,5 +26,6 @@ Summary:
   A web app that allows users to interact with well known search engines anonymously, which maintains their privacy and prevents search engines from collecting their data.
   
 Instructions on obtaining the Bing Search Key: 
-I got the subscription key I need to use the API using this tutorial: https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account
-After clicking AI + ML, click on Bing Search V7 on the right. This is the only part that differs in the tutorial.
+  I got the subscription key I need to use the API using this tutorial: https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account
+  After clicking AI + ML, click on Bing Search V7 on the right. This is the only part that differs in the tutorial.
+ After obtaining the key, create a text file at the root of the directory called: bingAPI_key and put only the key in the text file. There must be no extra characters, the file has to be called bingAPI_key, and the file must be in the root directory for the code to work.
