@@ -52,31 +52,60 @@
       max-width: 150px;
       max-height: 150px; }
 
-#back-to-index {
-        width:10%;
-        height:46px;
+/*------------------- RESULT PAGE ---------------------*/
+
+#result-header {
+        width:100%;
+        height:12%;
+        margin-bottom: 10px;
 }
 
-#search-section-result {
-        width:90%;
-        height:46px;
+#result-header #back-to-index {
+        width:          10%;
+        padding-top:    5px;
+        padding-bottom: 5px;
+        text-align:     center;
 }
 
-#search-section #searchbar {
-        width: 33%;
-        height: 46px;
-        display: flex;
-        align-items: center;
+#result-header #searchbar-result {
+        width:          33%;
+        display:        flex;
+        align-items:    center;
+        margin-top:     5px;
+        margin-bottom:  5px;
+        margin-right:   20px;
         padding: 0 10px 0 10px;
-        border-radius: 5px;
-        outline: 0;
-        margin-right: 20px;
+        border-radius:  5px;
+        outline:        0;
 }
 
-#search-section #search-button {
-        border-radius: 5px;
-        width: 100px;
+#result-header #search-button-result {
+        width:          100px;
+        outline:        0;
+        border-radius:  5px;
+        margin-top:     10px;
+        margin-bottom:  10px;
         background-color: lightgray;
 }
+
+#result-list {
+        width: 33%;
+}
+
+#result-list .result {
+
+}
+
+#result-header .logo-container-result {
+        align-self: flex-end;
+        margin: 0px 20px 0px 20px
+}
+
+#result-header .logo-container-result .logo {
+        margin: 5px 20px 5px 20px;
+        max-width: 60px;
+        max-height: 60px;
+}
+
 
 /*# sourceMappingURL=index.css.map */
