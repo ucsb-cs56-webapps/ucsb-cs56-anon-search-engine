@@ -28,7 +28,7 @@ function performSearch() {
         contentType: "application/json",
         url: "/search",
         data: (engine + ":" + query),
-        dataType: "text",
+        dataType: "json",
         cache: false,
         timeout: 600000,
         success: function (data) {
@@ -48,6 +48,13 @@ function performSearch() {
 }
 
 const didSuccessfullyGetData = (data) => {
+
+    // format data appropriately.
+    for(let i = 0; i < data.length; i++) {
+        data[i].title = data[i].title.replace(/["']/g, "");
+        data[i].subtitle = data[i].subtitle.replace(/["']/g, "");
+        data[i].url = data[i].url.replace(/["']/g, "");
+    }
     console.log(data);
 }
 
